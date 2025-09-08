@@ -29,6 +29,11 @@ L.Icon.Default.prototype.options.shadowUrl = 'https://unpkg.com/leaflet@1.7.1/di
   }
 
   ngOnInit(): void {
+    this.coordinateService.refreshMap$.subscribe((refresh: boolean) => {
+      if (refresh) {
+        this.loadExistingFaults();
+      }
+    });
   }
 
   ngAfterViewInit(): void {

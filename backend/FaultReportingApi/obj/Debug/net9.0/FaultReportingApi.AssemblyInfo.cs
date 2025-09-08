@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FaultReportingApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7560fc90368cdf4d6ce8939eac876ab68a15ed49")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b0c8c65e96a534f07c73644a24c495b2d1ef0442")]
 [assembly: System.Reflection.AssemblyProductAttribute("FaultReportingApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FaultReportingApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

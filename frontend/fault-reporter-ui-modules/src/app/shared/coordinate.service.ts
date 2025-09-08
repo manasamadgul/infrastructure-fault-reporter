@@ -26,4 +26,12 @@ export class CoordinateService {
   updateCoordinates(latitude: number, longitude: number): void {
     this.coordinatesSubject.next({ latitude, longitude });
   }
+
+  private refreshMapSubject = new BehaviorSubject<boolean>(false);
+  refreshMap$ = this.refreshMapSubject.asObservable();
+
+  refreshMap(): void {
+    this.refreshMapSubject.next(true);
+  }
+
 }

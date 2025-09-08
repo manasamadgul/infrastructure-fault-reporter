@@ -63,6 +63,8 @@ namespace FaultReportingApi.Controllers
         /// <summary>
         /// Delete an existing fault report
         /// DELETE: api/InfrastructureFaults/{id}
+        /// NOTE: DELETE functionality is available in the backend API but not implemented 
+        /// in the frontend interface as per project requirements
         /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFault(Guid id)
@@ -81,8 +83,9 @@ namespace FaultReportingApi.Controllers
         
         /// <summary>
         /// Delete all fault reports from the database
+        /// NOTE: DELETE functionality is available in the backend API but not implemented 
+        /// in the frontend interface as per project requirements
         /// </summary>
-        /// <returns></returns>
         [HttpDelete]
         public async Task<IActionResult> DeleteAllFaults()
         {

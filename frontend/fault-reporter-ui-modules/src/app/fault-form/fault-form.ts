@@ -69,12 +69,17 @@ onSubmit(): void {
       this.faultApiService.createFault(faultData).subscribe({
         next: (response) => {
           console.log('Fault created successfully:', response);
+          
+          // Reset form and coordinates after successful submission
           this.faultForm.reset();
           this.latitude = null;
           this.longitude = null;
+          this.coordinateService.refreshMap()
         },
         error: (error) => {
           console.error('Error creating fault:', error);
+          alert('Error submitting fault report. Please try again.');
+
         }
       });
     }

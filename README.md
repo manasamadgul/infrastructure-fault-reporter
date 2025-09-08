@@ -122,6 +122,8 @@ Frontend will be available at `http://localhost:4200`
 
 ## API Endpoints
 
-- `GET /api/InfrastructureFaults` - Retrieve all fault reports
 - `POST /api/InfrastructureFaults` - Create new fault report
+- `GET /api/InfrastructureFaults` - Retrieve all fault reports
 - `GET /api/InfrastructureFaults/{id}` - Get specific fault by ID
+- `DELETE: api/InfrastructureFaults/{id}` - Delete specific fault by ID (Not implemented from the frontend)
+- `DELETE /api/InfrastructureFaults`Delete all fault reports from the database (Not implemented from the frontend)
