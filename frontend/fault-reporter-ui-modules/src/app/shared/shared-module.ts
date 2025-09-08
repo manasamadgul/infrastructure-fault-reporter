@@ -4,7 +4,6 @@ import { TimeAgoPipe } from './time-ago-pipe';
 
 @NgModule({
   declarations: [
-    TimeAgoPipe,
     TimeAgoPipe
   ],
   imports: [

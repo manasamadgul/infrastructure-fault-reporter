@@ -25,7 +25,7 @@
       <p>Longitude: {{ longitude || 'Not selected' }}</p>
     </div>
 
-    <button type="submit" [disabled]="faultForm.invalid" class="btn btn-primary">
+    <button type="submit" [disabled]="faultForm.invalid || !latitude || !longitude" class="btn btn-primary">
       Submit Fault Report
     </button>
   </form>
