@@ -23,6 +23,11 @@ export class Map implements OnInit, AfterViewInit {
   //iconUrl: 'assets/marker-icon.png',
   //shadowUrl: 'assets/marker-shadow.png',
   //});
+  delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.prototype.options.iconUrl = 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png';
+L.Icon.Default.prototype.options.iconRetinaUrl = 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png';
+L.Icon.Default.prototype.options.shadowUrl = 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png';
+
   }
 
   ngOnInit(): void {
