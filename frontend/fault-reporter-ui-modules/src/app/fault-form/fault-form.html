@@ -1,1 +1,32 @@
-<p>fault-form works!</p>
+<div class="fault-form-container">
+  <h2>Report Infrastructure Fault</h2>
+  
+  <form [formGroup]="faultForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="faultType">Fault Type:</label>
+      <select id="faultType" formControlName="faultType" class="form-control">
+        <option value="">Select fault type</option>
+        <option value="CutCable">Cut Cable</option>
+        <option value="DamagedPole">Damaged Pole</option>
+        <option value="TangledWire">Tangled Wire</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description" 
+                class="form-control" rows="4" 
+                placeholder="Describe the fault..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Location:</label>
+      <p>Latitude: {{ latitude || 'Not selected' }}</p>
+      <p>Longitude: {{ longitude || 'Not selected' }}</p>
+    </div>
+
+    <button type="submit" [disabled]="faultForm.invalid" class="btn btn-primary">
+      Submit Fault Report
+    </button>
+  </form>
+</div>

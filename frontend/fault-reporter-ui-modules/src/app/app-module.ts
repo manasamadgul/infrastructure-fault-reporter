@@ -5,22 +5,29 @@ import { AppRoutingModule } from './app-routing-module';
 import { CoreModule } from './core/core-module'; // Import CoreModule
 
 import { App } from './app';
-import { FaultForm } from './fault-form/fault-form';
+import { FaultFormComponent } from './fault-form/fault-form';
 import { Map } from './map/map';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { TimeAgoPipe } from './shared/time-ago-pipe';
+
 
 @NgModule({
   declarations: [
     App,
-    FaultForm,
+    FaultFormComponent,
     Map
   ],
   imports: [
     BrowserModule,
     CoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
-    provideBrowserGlobalErrorListeners()
+    provideBrowserGlobalErrorListeners(),
+    TimeAgoPipe
   ],
   bootstrap: [App]
 })

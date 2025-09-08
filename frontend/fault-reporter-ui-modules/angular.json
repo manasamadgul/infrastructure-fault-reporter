@@ -35,7 +35,8 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/leaflet/dist/leaflet.css"
             ]
           },
           "configurations": {
@@ -86,10 +87,14 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
+              "src/favicon.ico",
+              "src/assets",
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "node_modules/leaflet/dist/images/",
+                "output": "assets/"
               }
+
             ],
             "styles": [
               "src/styles.css"
