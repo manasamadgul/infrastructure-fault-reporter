@@ -54,3 +54,74 @@ dotnet run
 Backend will be available at `http://localhost:5045`
 Swagger UI at `http://localhost:5045/swagger`
 
+### Frontend Setup
+
+#### Prerequisites
+1. Install Node.js (Version 22.19.0 or compatible):
+   - Download from [nodejs.org](https://nodejs.org/)
+   - Verify installation:
+     ```bash
+     node -v
+     npm -v
+     ```
+   - Ensure it displays the correct version numbers
+
+2. Install Angular CLI globally:
+npm install -g @angular/cli
+
+3. Verify Angular CLI installation:
+ng version
+
+#### Project Setup
+1. Navigate to the frontend directory:
+cd frontend
+
+2. Create Angular project with module-based architecture:
+ng new fault-reporter-ui-modules --routing --style=css --no-standalone
+
+Note: Using `--no-standalone` to create traditional module structure as required
+
+3. Navigate to the project directory:
+cd fault-reporter-ui-modules
+
+4. Install Leaflet mapping library and TypeScript definitions:
+npm install leaflet 
+npm install @types/leaflet --save-dev
+
+#### Run the Application
+1. Start the development server:
+ng serve
+
+Frontend will be available at `http://localhost:4200`
+
+## How to Use
+
+1. **View Existing Faults**: Open the application to see existing fault reports as markers on the map
+2. **Report New Fault**: 
+- Click anywhere on the map to drop a pin
+- Fill out the fault type and description in the form
+- Click "Submit Fault Report"
+3. **View Fault Details**: Click on any existing marker to see fault details and when it was reported
+
+## Features
+
+- Interactive map with click-to-pin functionality
+- Form validation and submission
+- Real-time coordinate capture
+- Custom time formatting pipe ("2 hours ago")
+- Popup displays for existing faults
+- Responsive design
+
+## Architecture Notes
+
+- **Modular Angular Structure**: Organized with Core (singletons), Shared (reusables), and App modules
+- **Service Communication**: Coordinate sharing between map and form components via shared service
+- **RESTful API**: Clean separation between frontend and backend
+- **Entity Framework**: Code-first approach with migrations
+- **Reactive Forms**: Better validation and type safety over template-driven forms
+
+## API Endpoints
+
+- `GET /api/InfrastructureFaults` - Retrieve all fault reports
+- `POST /api/InfrastructureFaults` - Create new fault report
+- `GET /api/InfrastructureFaults/{id}` - Get specific fault by ID
