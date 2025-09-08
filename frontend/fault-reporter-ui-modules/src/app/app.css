@@ -1,0 +1,40 @@
+.app-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  min-height: 100vh;
+ align-items: flex-start;
+
+}
+
+.map-section {
+  flex: 1;
+  min-height: 500px;
+}
+
+.form-section {
+  flex: 0 0 400px;
+  margin-top: 0;
+}
+
+#map {
+  height: 500px;
+  width: 100%;
+}
+
+/* Mobile responsive - stacked layout */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+  
+  .form-section {
+    flex: none;
+  }
+  
+  .map-section {
+    min-height: 300px;
+  }
+  
+}
