@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CoordinateService } from '../shared/coordinate.service';
 import { FaultApiService, FaultReport } from '../core/faultservice-api';
+import { Logger } from '../core/logger';
 
 /**
  * FaultFormComponent - Handles fault report form submission
@@ -30,7 +31,8 @@ export class FaultFormComponent implements OnInit,OnDestroy  {
    */
   constructor(private fb: FormBuilder, 
   private coordinateService: CoordinateService,
-  private faultApiService: FaultApiService) { }
+  private faultApiService: FaultApiService,
+  private logger:Logger) { }
 
   /**
   ** Initialize form and subscribe to coordinate updates
@@ -64,12 +66,11 @@ onSubmit(): void {
         latitude: this.latitude,
         longitude: this.longitude
       };
-      console.log('Fault report:', faultData);
+      this.logger.log('Submitting fault report: ' + JSON.stringify(faultData));
       // Submit to backend API with success/error handling
       this.faultApiService.createFault(faultData).subscribe({
         next: (response) => {
-          console.log('Fault created successfully:', response);
-          
+          this.logger.log('Fault created successfully: ' + response);
           // Reset form and coordinates after successful submission
           this.faultForm.reset();
           this.latitude = null;
@@ -77,9 +78,8 @@ onSubmit(): void {
           this.coordinateService.refreshMap()
         },
         error: (error) => {
-          console.error('Error creating fault:', error);
+          this.logger.log('Error creating fault: ' + JSON.stringify(error));
           alert('Error submitting fault report. Please try again.');
-
         }
       });
     }

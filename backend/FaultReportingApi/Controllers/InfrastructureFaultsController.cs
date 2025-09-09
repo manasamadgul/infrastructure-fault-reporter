@@ -6,6 +6,7 @@ using FaultReportingApi.Models;
 
 namespace FaultReportingApi.Controllers
 {
+
     /// <summary>
     /// API Controller for managing infrastructure fault reports
     /// Handles CRUD operations for fault reporting system
@@ -19,9 +20,12 @@ namespace FaultReportingApi.Controllers
         /// <summary>
         /// Constructor - injects database context for data operations
         /// </summary>
-        public InfrastructureFaultsController(InfrastructureFaultDbContext context)
+        private readonly ILogger<InfrastructureFaultsController> _logger;
+
+        public InfrastructureFaultsController(InfrastructureFaultDbContext context, ILogger<InfrastructureFaultsController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         /// <summary>
@@ -34,10 +38,12 @@ namespace FaultReportingApi.Controllers
             fault.Id = Guid.NewGuid();
             fault.ReportedAt = DateTime.UtcNow;
             fault.Status = InfrastructureFault.StatusEnum.Open;
+            _logger.LogInformation($"Creating new fault: {fault.FaultType}");
 
             // Add to database and save changes
             _context.InfrastructureFaults.Add(fault);
             await _context.SaveChangesAsync();
+            _logger.LogInformation($"Fault created with ID: {fault.Id}");
 
             return CreatedAtAction(nameof(GetFault), new { id = fault.Id }, fault);
         }
@@ -48,7 +54,11 @@ namespace FaultReportingApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<InfrastructureFault>>> GetFaults()
         {
-            return await _context.InfrastructureFaults.ToListAsync();
+            _logger.LogInformation("Getting all faults");
+            var faults = await _context.InfrastructureFaults.ToListAsync();
+            _logger.LogInformation($"Retrieved {faults.Count} faults");
+            return faults;
+
         }
         /// <summary>
         /// Retrieve a specific fault report by ID
